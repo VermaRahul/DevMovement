@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 
+//Test Comment
 namespace Search_That_Movie
 {
     public partial class MainPage : PhoneApplicationPage
