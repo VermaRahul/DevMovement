@@ -19,6 +19,10 @@ namespace Movie_Search
     {
         //Globals
         public string AllGenresAPI = "https://api.themoviedb.org/3/genre/list?api_key=c9271ad7bfc80b904833986c70d34b6f&language=en";
+
+        public string DetailedGenresAPI_1 = "https://api.themoviedb.org/3/genre/";
+        public string DetailedGenresAPI_2 = "/movies?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
+
         //Globals end
         public static new App Current
         {

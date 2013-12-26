@@ -1,5 +1,5 @@
-﻿using Movie_Search.Model;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using PortableClassLibrary.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,14 +7,14 @@ using System.Net;
 
 namespace Movie_Search.ViewModel
 {
-    public class AllGenresViewModel : INotifyPropertyChanged
+    public class DetailedGenreViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<Genre> _Genres = new ObservableCollection<Genre>();
+        private ObservableCollection<Movie> _Movies = new ObservableCollection<Movie>();
 
-        public ObservableCollection<Genre> Genres
+        public ObservableCollection<Movie> Movies
         {
-            get { return _Genres; }
-            set { _Genres = value; }
+            get { return _Movies; }
+            set { _Movies = value; }
         }
 
         private bool _isLoading;
@@ -22,19 +22,34 @@ namespace Movie_Search.ViewModel
         public bool isLoading
         {
             get { return _isLoading; }
-            set { 
+            set
+            {
                 _isLoading = value;
                 this.OnPropertyChanged(new PropertyChangedEventArgs("isLoading"));
             }
         }
 
+        private  int page_number;
+
         private WebClient _webClient = new WebClient();
 
-        public void GetGenres()
+        private DetailedGenre result;
+
+        public void GetGenres(int id)
         {
-            isLoading = true;
-            _webClient.DownloadStringCompleted += webClient_DownloadStringCompleted;
-            _webClient.DownloadStringAsync(new Uri(App.Current.AllGenresAPI));
+            if (result == null || page_number < result.total_pages)
+            {
+                isLoading = true;
+                page_number++;
+                string webaddr = App.Current.DetailedGenresAPI_1 + id.ToString() + App.Current.DetailedGenresAPI_2 + page_number.ToString();
+                _webClient.DownloadStringCompleted += webClient_DownloadStringCompleted;
+                _webClient.DownloadStringAsync(new Uri(webaddr));
+            }
+        }
+
+        public void FetchNextPage()
+        {
+            GetGenres(result.id);
         }
 
         private void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -43,9 +58,9 @@ namespace Movie_Search.ViewModel
             string json = e.Result;
             if (!string.IsNullOrEmpty(json))
             {
-                AllGenres results = JsonConvert.DeserializeObject<AllGenres>(json);
-                foreach (var v in results.genres)
-                    Genres.Add(v);
+                result = JsonConvert.DeserializeObject<DetailedGenre>(json);
+                foreach (var v in result.results)
+                    Movies.Add(v);
                 isLoading = false;
             }
         }
@@ -60,5 +75,6 @@ namespace Movie_Search.ViewModel
                 this.PropertyChanged(this, e);
             }
         }
+        
     }
 }
