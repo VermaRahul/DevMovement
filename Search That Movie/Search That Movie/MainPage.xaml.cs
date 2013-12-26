@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
 
 namespace Search_That_Movie
 {
@@ -32,6 +33,16 @@ namespace Search_That_Movie
             {
                 App.ViewModel.LoadData();
             }
+        }
+
+        private void ListItem_Tap(object sender, GestureEventArgs e)
+        {
+            WebBrowserTask task = new WebBrowserTask();
+            task.Uri = new Uri("http://msdn.microsoft.com", UriKind.Absolute);
+            //task.URL = "http://google.com";
+
+            //task.Uri = new Uri("www.google.com");
+            task.Show();
         }
     }
 }
