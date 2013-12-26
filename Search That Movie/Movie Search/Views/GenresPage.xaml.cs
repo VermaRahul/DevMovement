@@ -18,6 +18,7 @@ namespace Movie_Search.Views
             InitializeComponent();
 
             GenreViewModel genreViewModel = new GenreViewModel();
+            genreViewModel.isLoading = true;
             genreViewModel.GetGenres();
             this.DataContext = genreViewModel;
         }

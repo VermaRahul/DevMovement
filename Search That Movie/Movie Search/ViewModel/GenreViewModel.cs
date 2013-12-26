@@ -3,13 +3,14 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Text;
 
 namespace Movie_Search.ViewModel
 {
-    public class GenreViewModel
+    public class GenreViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Genre> _Genres = new ObservableCollection<Genre>();
 
@@ -18,6 +19,18 @@ namespace Movie_Search.ViewModel
             get { return _Genres; }
             set { _Genres = value; }
         }
+
+        private bool _isLoading;
+
+        public bool isLoading
+        {
+            get { return _isLoading; }
+            set { 
+                _isLoading = value;
+                this.OnPropertyChanged(new PropertyChangedEventArgs("isLoading"));
+            }
+        }
+        
 
         public void GetGenres()
         {
@@ -35,6 +48,18 @@ namespace Movie_Search.ViewModel
                 Genres results = JsonConvert.DeserializeObject<Genres>(json);
                 foreach (var v in results.genres)
                     Genres.Add(v);
+                isLoading = false;
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            // get handler (usually a local event variable or just the event)
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, e);
             }
         }
     }
