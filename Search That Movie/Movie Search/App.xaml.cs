@@ -17,6 +17,14 @@ namespace Movie_Search
 {
     public partial class App : Application
     {
+        //Globals
+        public string AllGenresAPI = "https://api.themoviedb.org/3/genre/list?api_key=c9271ad7bfc80b904833986c70d34b6f&language=en";
+        //Globals end
+        public static new App Current
+        {
+            get { return Application.Current as App; }
+        }
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>

@@ -37,7 +37,7 @@ namespace Movie_Search.ViewModel
 
             WebClient webClient = new WebClient();
             webClient.DownloadStringCompleted += webClient_DownloadStringCompleted;
-            webClient.DownloadStringAsync(new Uri("https://api.themoviedb.org/3/genre/list?api_key=c9271ad7bfc80b904833986c70d34b6f&language=en"));
+            webClient.DownloadStringAsync(new Uri(App.Current.AllGenresAPI));
         }
 
         private void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
