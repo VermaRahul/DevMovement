@@ -11,18 +11,8 @@ namespace Movie_Search.Model
         public string name { get; set; }
     }
 
-
-    //public class Genre
-    //{
-    //    public int id { get; set; }
-    //    public string name { get; set; }
-    //}
-
-    //public class RootObject
-    //{
-    //    public List<Genre> genres { get; set; }
-    //}
-
-
-
+    public class Genres
+    {
+        public List<Genre> genres { get; set; }
+    }
 }
