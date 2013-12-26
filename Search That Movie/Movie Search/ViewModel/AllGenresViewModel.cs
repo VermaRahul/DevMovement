@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Movie_Search.ViewModel
 {
-    public class GenreViewModel : INotifyPropertyChanged
+    public class AllGenresViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Genre> _Genres = new ObservableCollection<Genre>();
 
@@ -45,7 +45,7 @@ namespace Movie_Search.ViewModel
             string json = e.Result;
             if (!string.IsNullOrEmpty(json))
             {
-                Genres results = JsonConvert.DeserializeObject<Genres>(json);
+                AllGenres results = JsonConvert.DeserializeObject<AllGenres>(json);
                 foreach (var v in results.genres)
                     Genres.Add(v);
                 isLoading = false;

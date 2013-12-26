@@ -11,7 +11,7 @@ namespace Movie_Search.Model
         public string name { get; set; }
     }
 
-    public class Genres
+    public class AllGenres
     {
         public List<Genre> genres { get; set; }
     }
