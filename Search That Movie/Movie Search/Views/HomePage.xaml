@@ -27,25 +27,25 @@
             <controls:PanoramaItem Header="Home">
                 <Grid>
                     <ListBox>
-                        <ListBoxItem Margin="10,0,0,10">
+                        <ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Recent"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,10">
-                            <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Genres"/>
+                        <ListBoxItem Margin="10,0,0,15">
+                            <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Genres" Tap="Genre_OnTap"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,10">
+                        <ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Upcoming"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,10">
+                        <ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Now Playing"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,10">
+                        <ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Popular Movies"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,10">
+                        <ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Top Rated"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,10">
+                        <ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Popular Celebrities"/>
                         </ListBoxItem>
                     </ListBox>

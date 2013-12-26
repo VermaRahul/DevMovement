@@ -19,5 +19,10 @@ namespace Movie_Search.Views
         {
             InitializeComponent();
         }
+
+        private void Genre_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/GenresPage.xaml", UriKind.Relative));
+        }
     }
 }
