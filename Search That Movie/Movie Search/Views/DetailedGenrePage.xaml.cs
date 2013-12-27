@@ -80,7 +80,7 @@ namespace Movie_Search.Views
                 if( page._lastFetch < viewer.ScrollableHeight )
                 {
                   // Trigger within 1/4 the viewport.
-                  if( viewer.VerticalOffset >= viewer.ScrollableHeight - viewer.ViewportHeight / 4 )
+                  if( viewer.VerticalOffset >= viewer.ScrollableHeight - viewer.ViewportHeight )
                   {
                     page._lastFetch = viewer.ScrollableHeight;
                     (page.DataContext as DetailedGenreViewModel).FetchNextPage();

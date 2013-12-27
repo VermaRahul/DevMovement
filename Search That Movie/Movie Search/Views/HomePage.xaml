@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -26,12 +27,12 @@
             <!--Panorama item one-->
             <controls:PanoramaItem Header="Home">
                 <Grid>
-                    <ListBox>
+                    <ListBox toolkit:TiltEffect.IsTiltEnabled="True">
                         <ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Recent"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,15">
-                            <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Genres" Tap="Genre_OnTap"/>
+                        <ListBoxItem Margin="10,0,0,15" Tap="Genre_OnTap">
+                            <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Genres" />
                         </ListBoxItem>
                         <ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Upcoming"/>

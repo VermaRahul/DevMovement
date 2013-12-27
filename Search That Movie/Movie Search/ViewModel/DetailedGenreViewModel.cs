@@ -37,6 +37,8 @@ namespace Movie_Search.ViewModel
 
         public void GetGenres(int id)
         {
+            if (isLoading)
+                return;
             if (result == null || page_number < result.total_pages)
             {
                 isLoading = true;

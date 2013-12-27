@@ -18,6 +18,8 @@ namespace Movie_Search
     public partial class App : Application
     {
         //Globals
+        public string ImagesBaseLink = "http://image.tmdb.org/t/p/";
+
         public string AllGenresAPI = "https://api.themoviedb.org/3/genre/list?api_key=c9271ad7bfc80b904833986c70d34b6f&language=en";
 
         public string DetailedGenresAPI_1 = "https://api.themoviedb.org/3/genre/";

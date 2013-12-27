@@ -35,7 +35,7 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" Name="progressBar1" IsIndeterminate="True" Visibility="{Binding isLoading, Converter={StaticResource BoolToVis}}"/>
-            <ListBox x:Name="GenreListBox" ItemsSource="{Binding Genres}" SelectionChanged="GenreListBox_SelectionChanged">
+            <ListBox x:Name="GenreListBox" ItemsSource="{Binding Genres}" SelectionChanged="GenreListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="10,0,0,15">
