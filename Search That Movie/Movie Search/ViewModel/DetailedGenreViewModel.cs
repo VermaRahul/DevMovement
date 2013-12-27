@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Net;
+using System.Windows;
 
 namespace Movie_Search.ViewModel
 {
@@ -57,6 +58,12 @@ namespace Movie_Search.ViewModel
         private void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             _webClient.DownloadStringCompleted -= webClient_DownloadStringCompleted;
+            if (e == null)
+            {
+                MessageBox.Show("Seems like the internet connection is down or the website refused the request.\n:(\nWe are sad too that you couldnt continue.", "Error", MessageBoxButton.OK);
+                isLoading = false;
+                return; //TODO: give a error here
+            }
             string json = e.Result;
             if (!string.IsNullOrEmpty(json))
             {
