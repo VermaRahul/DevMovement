@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using PortableClassLibrary.Model;
 using System.Windows.Navigation;
 using Movie_Search.ViewModel;
+using Microsoft.Phone.Shell;
 
 namespace Movie_Search.Views
 {
@@ -60,6 +61,47 @@ namespace Movie_Search.Views
                 // reset selection of ListBox 
                 ((ListBox)sender).SelectedIndex = -1;
                 //NavigationService.Navigate(new Uri("/Views/DetailedGenrePage.xaml?id=" + (selectedItem.id).ToString() + "&name=" + selectedItem.name, UriKind.Relative));
+            }
+        }
+
+        private void Panorama_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((Panorama)sender).SelectedIndex == 0)
+            {
+                for (var i = 0; i < this.ApplicationBar.Buttons.Count; i++)
+                {
+                    var button = this.ApplicationBar.Buttons[i] as ApplicationBarIconButton;
+
+                    if (button != null)
+                    {
+                        if (button.Text == "Show All")
+                        {
+                            this.ApplicationBar.Buttons.RemoveAt(i);
+                            return;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (var i = 0; i < this.ApplicationBar.Buttons.Count; i++)
+                {
+                    var button = this.ApplicationBar.Buttons[i] as ApplicationBarIconButton;
+
+                    if (button != null)
+                    {
+                        if (button.Text == "Show All")
+                        {
+                            return;
+                        }
+                    }
+                }
+                
+                var newButton = new ApplicationBarIconButton();
+                newButton.IconUri = new Uri("/Assets/AppBar/appbar.download.rest.png", UriKind.Relative);
+                newButton.Text = "Show All";
+                this.ApplicationBar.Buttons.Add(newButton);
+                panoramaItem.Title = "Yolopad";
             }
         }
     }

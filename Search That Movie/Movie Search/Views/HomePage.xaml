@@ -24,10 +24,17 @@
 
 
     </phone:PhoneApplicationPage.Resources>
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar>
+			<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.refresh.rest.png" Text="Refresh"/>
+			<!--<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.download.rest.png" Text="View All"/>-->
+			<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.feature.search.rest.png" Text="Search"/>
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <controls:Panorama Title="Movie Search">
+        <controls:Panorama x:Name="panoramaItem" Title="Movie Search" SelectionChanged="Panorama_SelectionChanged">
             <controls:Panorama.Background>
                 <ImageBrush ImageSource="http://image.tmdb.org/t/p/w1280/d8duYyyC9J5T825Hg7grmaabfxQ.jpg"
                             Stretch="UniformToFill"
