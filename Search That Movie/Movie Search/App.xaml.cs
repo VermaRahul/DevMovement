@@ -18,7 +18,7 @@ namespace Movie_Search
     public partial class App : Application
     {
         //Globals
-
+        public string PopularPeopleAPI = "https://api.themoviedb.org/3/person/popular?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
         public string UpcomingAPI = "https://api.themoviedb.org/3/movie/upcoming?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
         public string NowPlayingAPI = "https://api.themoviedb.org/3/movie/now_playing?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
         public string PopularAPI = "https://api.themoviedb.org/3/movie/popular?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";

@@ -46,6 +46,14 @@ namespace PortableClassLibrary.Model
         public int total_results { get; set; }
     }
 
+    public class People
+    {
+        public int page { get; set; }
+        public List<Person> results { get; set; }
+        public int total_pages { get; set; }
+        public int total_results { get; set; }
+    }
+
     public class HomePageItems
     {
         public int status_code { get; set; }

@@ -57,7 +57,7 @@
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Top Rated"/>
                         </ListBoxItem>
                         <ListBoxItem Margin="10,0,0,15">
-                            <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Popular Celebrities"/>
+                            <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="People"/>
                         </ListBoxItem>
                     </ListBox>
                 </Grid>
@@ -89,7 +89,7 @@
                                         <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
 
                                         <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
-                                    <Run Text="Released: " />
+                                    <Run Text="Releasing: " />
                                     <Run Text="{Binding release_date}" />
                                         </TextBlock>
                                     </StackPanel>
@@ -178,7 +178,7 @@
 
             <controls:PanoramaItem Header="Top Rated">
                 <Grid>
-                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding isLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding topisLoading, Converter={StaticResource BoolToVis}}"/>
                     <ListBox ItemsSource="{Binding TopRatedMovies}" SelectionChanged="MovieListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -201,8 +201,9 @@
                                         <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
 
                                         <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
-                                    <Run Text="Released: " />
-                                    <Run Text="{Binding release_date}" />
+                                            <Run Text="Rating: " />
+                                            <Run Text="{Binding vote_average}" />
+                                            <Run Text="/ 10" />
                                         </TextBlock>
                                     </StackPanel>
                                 </Grid>
@@ -212,6 +213,39 @@
 
                 </Grid>
             </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="People">
+                <Grid>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding peopleisLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ListBox ItemsSource="{Binding PopularPeople}" SelectionChanged="PeopleListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="{Binding profile_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding name}" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </Grid>
+            </controls:PanoramaItem>
+            
         </controls:Panorama>
     </Grid>
 

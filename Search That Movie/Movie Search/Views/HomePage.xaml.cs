@@ -51,5 +51,16 @@ namespace Movie_Search.Views
                 //NavigationService.Navigate(new Uri("/Views/DetailedGenrePage.xaml?id=" + (selectedItem.id).ToString() + "&name=" + selectedItem.name, UriKind.Relative));
             } 
         }
+
+        private void PeopleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                Person selectedItem = (Person)e.AddedItems[0];
+                // reset selection of ListBox 
+                ((ListBox)sender).SelectedIndex = -1;
+                //NavigationService.Navigate(new Uri("/Views/DetailedGenrePage.xaml?id=" + (selectedItem.id).ToString() + "&name=" + selectedItem.name, UriKind.Relative));
+            }
+        }
     }
 }

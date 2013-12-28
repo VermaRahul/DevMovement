@@ -42,6 +42,14 @@ namespace Movie_Search.ViewModel
             set { _TopRatedMovies = value; }
         }
 
+        private ObservableCollection<Person> _PopularPeople = new ObservableCollection<Person>();
+
+        public ObservableCollection<Person> PopularPeople
+        {
+            get { return _PopularPeople; }
+            set { _PopularPeople = value; }
+        }
+
         private bool _isLoading;
 
         public bool isLoading
@@ -102,6 +110,18 @@ namespace Movie_Search.ViewModel
             }
         }
 
+        private bool _peopleisLoading;
+
+        public bool peopleisLoading
+        {
+            get { return _peopleisLoading; }
+            set
+            {
+                _peopleisLoading = value;
+                this.OnPropertyChanged(new PropertyChangedEventArgs("peopleisLoading"));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(PropertyChangedEventArgs e)
@@ -117,12 +137,15 @@ namespace Movie_Search.ViewModel
         private WebClient _topwebClient = new WebClient();
         private WebClient _upcomingwebClient = new WebClient();
         private WebClient _popwebClient = new WebClient();
+        private WebClient _peoplewebClient = new WebClient();
+
         //private HomePageItems result;
 
         private Upcoming upcoming;
         private TopRated top;
         private NowPlaying now;
         private Popular pop;
+        private People people;
 
         public void LoadHomeItems()
         {
@@ -135,6 +158,7 @@ namespace Movie_Search.ViewModel
             nowisLoading = true;
             popularisLoading = true;
             topisLoading = true;
+            peopleisLoading = true;
 
 
             _upcomingwebClient.DownloadStringCompleted += upcoming_DownloadStringCompleted;
@@ -149,6 +173,29 @@ namespace Movie_Search.ViewModel
 
             _topwebClient.DownloadStringCompleted += top_DownloadStringCompleted;
             _topwebClient.DownloadStringAsync(new Uri(App.Current.TopRatedAPI + "1"));
+
+            _peoplewebClient.DownloadStringCompleted += people_DownloadStringCompleted;
+            _peoplewebClient.DownloadStringAsync(new Uri(App.Current.PopularPeopleAPI + "1"));
+        }
+
+        private void people_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            _topwebClient.DownloadStringCompleted -= people_DownloadStringCompleted;
+            if (e == null && isLoading)
+            {
+                MessageBox.Show("Seems like the internet connection is down or the website refused the request.\n:(\nWe are sad too that you couldnt continue.", "Error", MessageBoxButton.OK);
+                isLoading = false;
+                return; //TODO: give a error here
+            }
+            string json = e.Result;
+            if (!string.IsNullOrEmpty(json))
+            {
+                people = JsonConvert.DeserializeObject<People>(json);
+                foreach (var v in people.results)
+                    PopularPeople.Add(v);
+                peopleisLoading = false;
+                isLoadingCheck();
+            }
         }
 
         private void top_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -233,7 +280,7 @@ namespace Movie_Search.ViewModel
 
         private void isLoadingCheck()
         {
-            if (!upcomingisLoading && !topisLoading && !nowisLoading && !topisLoading)
+            if (!upcomingisLoading && !topisLoading && !nowisLoading && !topisLoading && !peopleisLoading)
                 isLoading = false;
         }
 
