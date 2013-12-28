@@ -1,0 +1,43 @@
+public void LoadHomeItems()
+        {
+            if (isLoading)
+                return;
+            if (result == null)
+            {
+                isLoading = true;
+
+                upcomingisLoading = true;
+                nowisLoading = true;
+                popularisLoading = true;
+                topisLoading = true;
+
+
+                _webClient.DownloadStringCompleted += webClient_DownloadStringCompleted;
+                _webClient.DownloadStringAsync(new Uri(App.Current.HomePageAPI));
+            }
+        }
+
+        private void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            _webClient.DownloadStringCompleted -= webClient_DownloadStringCompleted;
+            if (e == null)
+            {
+                MessageBox.Show("Seems like the internet connection is down or the website refused the request.\n:(\nWe are sad too that you couldnt continue.", "Error", MessageBoxButton.OK);
+                isLoading = false;
+                return; //TODO: give a error here
+            }
+            string json = e.Result;
+            if (!string.IsNullOrEmpty(json))
+            {
+                result = JsonConvert.DeserializeObject<HomePageItems>(json);
+                foreach (var v in result.now_playing.results)
+                    NowPlayingMovies.Add(v);
+                foreach (var v in result.popular.results)
+                    PopularMovies.Add(v);
+                foreach (var v in result.upcoming.results)
+                    UpcomingMovies.Add(v);
+                foreach (var v in result.top_rated.results)
+                    TopRatedMovies.Add(v);
+                isLoading = false;
+            }
+        }

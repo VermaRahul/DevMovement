@@ -2,6 +2,7 @@
     x:Class="Movie_Search.Views.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:Movie_Search.Converter"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
@@ -14,6 +15,15 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
+
+    <phone:PhoneApplicationPage.Resources>
+        <converter:BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converter:ImageResolutionConverter x:Key="ImageResolutionConverter" />
+
+
+
+
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
@@ -54,20 +64,152 @@
             </controls:PanoramaItem>
 
             <!--Panorama item two-->
-            <controls:PanoramaItem Header="item2">
+            <controls:PanoramaItem Header="Upcoming">
                 <Grid>
-                    <ListBox>
-                        
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding upcomingisLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ListBox ItemsSource="{Binding UpcomingMovies}" SelectionChanged="MovieListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="{Binding poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
+
+                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
+                                    <Run Text="Released: " />
+                                    <Run Text="{Binding release_date}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
+
                 </Grid>
             </controls:PanoramaItem>
 
             <!--Panorama item three-->
-            <controls:PanoramaItem Header="item3">
+            <controls:PanoramaItem Header="Now Playing">
                 <Grid>
-                    <ListBox>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding nowisLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ListBox ItemsSource="{Binding NowPlayingMovies}" SelectionChanged="MovieListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="{Binding poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
 
+                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
+                                    <Run Text="Released: " />
+                                    <Run Text="{Binding release_date}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
+
+                </Grid>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="Popular">
+                <Grid>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding popularisLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ListBox ItemsSource="{Binding PopularMovies}" SelectionChanged="MovieListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="{Binding poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
+
+                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
+                                    <Run Text="Released: " />
+                                    <Run Text="{Binding release_date}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </Grid>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="Top Rated">
+                <Grid>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding isLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ListBox ItemsSource="{Binding TopRatedMovies}" SelectionChanged="MovieListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="{Binding poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
+
+                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
+                                    <Run Text="Released: " />
+                                    <Run Text="{Binding release_date}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
                 </Grid>
             </controls:PanoramaItem>
         </controls:Panorama>

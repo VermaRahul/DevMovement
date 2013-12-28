@@ -18,6 +18,12 @@ namespace Movie_Search
     public partial class App : Application
     {
         //Globals
+
+        public string UpcomingAPI = "https://api.themoviedb.org/3/movie/upcoming?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
+        public string NowPlayingAPI = "https://api.themoviedb.org/3/movie/now_playing?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
+        public string PopularAPI = "https://api.themoviedb.org/3/movie/popular?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
+        public string TopRatedAPI = "https://api.themoviedb.org/3/movie/top_rated?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
+        
         public string ImagesBaseLink = "http://image.tmdb.org/t/p/";
 
         public string AllGenresAPI = "https://api.themoviedb.org/3/genre/list?api_key=c9271ad7bfc80b904833986c70d34b6f&language=en";

@@ -73,7 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AllGenresViewModel.cs" />
     <Compile Include="ViewModel\DetailedGenreViewModel.cs" />
-    <Compile Include="ViewModel\ObservableCollection.cs" />
+    <Compile Include="ViewModel\HomePageViewModel.cs" />
     <Compile Include="Views\DetailedGenrePage.xaml.cs">
       <DependentUpon>DetailedGenrePage.xaml</DependentUpon>
     </Compile>
