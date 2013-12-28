@@ -14,6 +14,7 @@ using PortableClassLibrary.Model;
 using System.Windows.Navigation;
 using Movie_Search.ViewModel;
 using Microsoft.Phone.Shell;
+using Coding4Fun.Toolkit.Controls;
 
 namespace Movie_Search.Views
 {
@@ -87,7 +88,6 @@ namespace Movie_Search.Views
                 for (var i = 0; i < this.ApplicationBar.Buttons.Count; i++)
                 {
                     var button = this.ApplicationBar.Buttons[i] as ApplicationBarIconButton;
-
                     if (button != null)
                     {
                         if (button.Text == "Show All")
@@ -96,12 +96,35 @@ namespace Movie_Search.Views
                         }
                     }
                 }
-                
                 var newButton = new ApplicationBarIconButton();
                 newButton.IconUri = new Uri("/Assets/AppBar/appbar.download.rest.png", UriKind.Relative);
                 newButton.Text = "Show All";
                 this.ApplicationBar.Buttons.Add(newButton);
                 panoramaItem.Title = "Yolopad";
+            }
+        }
+
+        private void SearchAppBarButton_Click(object sender, EventArgs e)
+        {
+            var input = new InputPrompt();
+            //input.Completed += input_Completed;
+            input.Title = "Search";
+            input.BorderThickness = new Thickness(1);
+            input.IsCancelVisible = true;
+            input.Completed += input_Completed;
+            input.Message = "Enter any keywords";
+            input.Show();
+        }
+
+        private void input_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
+        {
+            var a = 1;
+            if (e.PopUpResult.ToString() == "Ok")
+            {
+                if (!string.IsNullOrWhiteSpace(e.Result))
+                {
+                    NavigationService.Navigate(new Uri("/Views/SearchResultPage.xaml?query=" + e.Result , UriKind.Relative));
+                }
             }
         }
     }

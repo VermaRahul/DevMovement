@@ -8,12 +8,10 @@ using System.Windows.Navigation;
 
 namespace Movie_Search.Views
 {
-    public partial class DetailedGenrePage : PhoneApplicationPage
+    public partial class SearchResultPage : PhoneApplicationPage
     {
-        string genre_name;
-        int genre_id;
-
-        public DetailedGenrePage()
+        string que;
+        public SearchResultPage()
         {
             InitializeComponent();
         }
@@ -24,13 +22,11 @@ namespace Movie_Search.Views
 
             if (e.NavigationMode == NavigationMode.Forward || e.NavigationMode == NavigationMode.New)
             {
-                genre_id = Convert.ToInt32(NavigationContext.QueryString["id"]);
-                genre_name = NavigationContext.QueryString["name"];
-                genre.Text = genre_name;
+                que = NavigationContext.QueryString["query"];
 
-                DetailedGenreViewModel detailedGenreViewModel = new DetailedGenreViewModel();
-                detailedGenreViewModel.GetGenres(genre_id);
-                this.DataContext = detailedGenreViewModel;
+                SearchResultPageViewModel searchResultPageViewModel = new SearchResultPageViewModel();
+                searchResultPageViewModel.GetResults(que);
+                this.DataContext = searchResultPageViewModel;
 
             }
         }
@@ -46,7 +42,7 @@ namespace Movie_Search.Views
             //} 
         }
 
-        public static readonly DependencyProperty ListVerticalOffsetProperty = DependencyProperty.Register("ListVerticalOffset", typeof(double), typeof(DetailedGenrePage), new PropertyMetadata(new PropertyChangedCallback(OnListVerticalOffsetChanged)));
+        public static readonly DependencyProperty ListVerticalOffsetProperty = DependencyProperty.Register("ListVerticalOffset", typeof(double), typeof(SearchResultPage), new PropertyMetadata(new PropertyChangedCallback(OnListVerticalOffsetChanged)));
         public double ListVerticalOffset
         {
             get { return (double)this.GetValue(ListVerticalOffsetProperty); }
@@ -66,23 +62,23 @@ namespace Movie_Search.Views
         }
 
         private double _lastFetch;
-        private static void OnListVerticalOffsetChanged( DependencyObject obj, DependencyPropertyChangedEventArgs e )
+        private static void OnListVerticalOffsetChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            DetailedGenrePage page = obj as DetailedGenrePage;
+            SearchResultPage page = obj as SearchResultPage;
             ScrollViewer viewer = page._listScrollViewer;
 
-            if( viewer != null )
-              {
-                if( page._lastFetch < viewer.ScrollableHeight )
+            if (viewer != null)
+            {
+                if (page._lastFetch < viewer.ScrollableHeight)
                 {
-                  // Trigger within 1/4 the viewport.
-                  if( viewer.VerticalOffset >= viewer.ScrollableHeight - viewer.ViewportHeight )
-                  {
-                    page._lastFetch = viewer.ScrollableHeight;
-                    (page.DataContext as DetailedGenreViewModel).FetchNextPage();
-                  }
+                    // Trigger within 1/4 the viewport.
+                    if (viewer.VerticalOffset >= viewer.ScrollableHeight - viewer.ViewportHeight)
+                    {
+                        page._lastFetch = viewer.ScrollableHeight;
+                        (page.DataContext as SearchResultPageViewModel).FetchNextMoviePage();
+                    }
                 }
-              }
             }
+        }
     }
 }

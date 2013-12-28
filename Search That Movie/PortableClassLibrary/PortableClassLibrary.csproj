@@ -38,9 +38,11 @@
   <ItemGroup>
     <Compile Include="Model\AllGenres.cs" />
     <Compile Include="Model\DetailedGenre.cs" />
-    <Compile Include="Model\HomePageItems.cs" />
+    <Compile Include="Model\HomeItems.cs" />
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Movies.cs" />
+    <Compile Include="Model\SearchResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

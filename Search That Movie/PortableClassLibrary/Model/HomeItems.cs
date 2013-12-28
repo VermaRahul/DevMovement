@@ -12,38 +12,22 @@ namespace PortableClassLibrary.Model
         public string maximum { get; set; }
     }
 
-    public class Upcoming
+    public class Upcoming : Movies
     {
         public Dates dates { get; set; }
-        public int page { get; set; }
-        public List<Movie> results { get; set; }
-        public int total_pages { get; set; }
-        public int total_results { get; set; }
     }
 
-    public class NowPlaying
+    public class NowPlaying : Movies
     {
         public Dates dates { get; set; }
-        public int page { get; set; }
-        public List<Movie> results { get; set; }
-        public int total_pages { get; set; }
-        public int total_results { get; set; }
     }
 
-    public class Popular
+    public class Popular : Movies
     {
-        public int page { get; set; }
-        public List<Movie> results { get; set; }
-        public int total_pages { get; set; }
-        public int total_results { get; set; }
     }
 
-    public class TopRated
+    public class TopRated : Movies
     {
-        public int page { get; set; }
-        public List<Movie> results { get; set; }
-        public int total_pages { get; set; }
-        public int total_results { get; set; }
     }
 
     public class People
@@ -54,7 +38,7 @@ namespace PortableClassLibrary.Model
         public int total_results { get; set; }
     }
 
-    public class HomePageItems
+    public class HomeItems
     {
         public int status_code { get; set; }
         public string status_message { get; set; }

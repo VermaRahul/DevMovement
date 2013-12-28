@@ -28,7 +28,7 @@
 		<shell:ApplicationBar>
 			<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.refresh.rest.png" Text="Refresh"/>
 			<!--<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.download.rest.png" Text="View All"/>-->
-			<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.feature.search.rest.png" Text="Search"/>
+			<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.feature.search.rest.png" Text="Search" Click="SearchAppBarButton_Click"/>
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>
 
