@@ -63,7 +63,6 @@
                 </Grid>
             </controls:PanoramaItem>
 
-            <!--Panorama item two-->
             <controls:PanoramaItem Header="Upcoming">
                 <Grid>
                     <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding upcomingisLoading, Converter={StaticResource BoolToVis}}"/>
@@ -101,7 +100,6 @@
                 </Grid>
             </controls:PanoramaItem>
 
-            <!--Panorama item three-->
             <controls:PanoramaItem Header="Now Playing">
                 <Grid>
                     <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding nowisLoading, Converter={StaticResource BoolToVis}}"/>
@@ -164,8 +162,8 @@
                                         <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
 
                                         <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
-                                    <Run Text="Released: " />
-                                    <Run Text="{Binding release_date}" />
+                                            <Run Text="Released: " />
+                                            <Run Text="{Binding release_date}" />
                                         </TextBlock>
                                     </StackPanel>
                                 </Grid>
@@ -205,6 +203,12 @@
                                             <Run Text="{Binding vote_average}" />
                                             <Run Text="/ 10" />
                                         </TextBlock>
+                                        
+                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,0,0,0">
+                                            <Run Text="Released: " />
+                                            <Run Text="{Binding release_date}" />
+                                        </TextBlock>
+                                        
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
