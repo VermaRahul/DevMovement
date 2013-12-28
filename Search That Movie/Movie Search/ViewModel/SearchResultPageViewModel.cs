@@ -18,60 +18,103 @@ namespace Movie_Search.ViewModel
             set { _Movies = value; }
         }
 
-        private bool _isLoading;
+        private ObservableCollection<Person> _People = new ObservableCollection<Person>();
 
-        public bool isLoading
+        public ObservableCollection<Person> People
         {
-            get { return _isLoading; }
+            get { return _People; }
+            set { _People = value; }
+        }
+
+        private bool _movieisLoading;
+
+        public bool movieisLoading
+        {
+            get { return _movieisLoading; }
             set
             {
-                _isLoading = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("isLoading"));
+                _movieisLoading = value;
+                this.OnPropertyChanged(new PropertyChangedEventArgs("movieisLoading"));
             }
         }
 
-        private int page_number;
+        private bool _peopleisLoading;
 
-        private WebClient _webClient = new WebClient();
+        public bool peopleisLoading
+        {
+            get { return _peopleisLoading; }
+            set
+            {
+                _peopleisLoading = value;
+                this.OnPropertyChanged(new PropertyChangedEventArgs("peopleisLoading"));
+            }
+        }
+
+        private int moviepage_number;
+
+        private int peoplepage_number;
+
+        private WebClient _moviewebClient = new WebClient();
+
+        private WebClient _peoplewebClient = new WebClient();
 
         private Movies movies;
 
+        private People people;
+
         public void GetResults(string query)
         {
-
             GetMovieResults(query);
+            GetPeopleResults(query);
         }
 
         private string que;
 
         private void GetMovieResults(string query)
         {
-            if (isLoading)
+            if (movieisLoading)
                 return;
-            if (movies == null || page_number < movies.total_pages)
+            if (movies == null || moviepage_number < movies.total_pages)
             {
-                isLoading = true;
-                page_number++;
+                movieisLoading = true;
+                moviepage_number++;
                 if (String.IsNullOrEmpty(que))
                     que = String.Copy(query);
-                string webaddr = App.Current.SearchMoviesAPI + page_number.ToString() + "&query=" + query;
-                _webClient.DownloadStringCompleted += webClient_DownloadStringCompleted;
-                _webClient.DownloadStringAsync(new Uri(webaddr));
+                string webaddr = App.Current.SearchMoviesAPI + moviepage_number.ToString() + "&query=" + query;
+                _moviewebClient.DownloadStringCompleted += moviewebClient_DownloadStringCompleted;
+                _moviewebClient.DownloadStringAsync(new Uri(webaddr));
+            }
+        }
+
+        private void GetPeopleResults(string query)
+        {
+            if (peopleisLoading)
+                return;
+            if (people == null || peoplepage_number < people.total_pages)
+            {
+                peopleisLoading = true;
+                peoplepage_number++;
+                if (String.IsNullOrEmpty(que))
+                    que = String.Copy(query);
+                string webaddr = App.Current.SearchPeopleAPI +peoplepage_number.ToString() + "&query=" + query;
+                _peoplewebClient.DownloadStringCompleted += peoplewebClient_DownloadStringCompleted;
+                _peoplewebClient.DownloadStringAsync(new Uri(webaddr));
             }
         }
 
         public void FetchNextMoviePage()
         {
             GetMovieResults(que);
+            GetPeopleResults(que);
         }
 
-        private void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        private void moviewebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            _webClient.DownloadStringCompleted -= webClient_DownloadStringCompleted;
+            _moviewebClient.DownloadStringCompleted -= moviewebClient_DownloadStringCompleted;
             if (e == null)
             {
                 MessageBox.Show("Seems like the internet connection is down or the website refused the request.\n:(\nWe are sad too that you couldnt continue.", "Error", MessageBoxButton.OK);
-                isLoading = false;
+                movieisLoading = false;
                 return; //TODO: give a error here
             }
             string json = e.Result;
@@ -80,7 +123,26 @@ namespace Movie_Search.ViewModel
                 movies = JsonConvert.DeserializeObject<Movies>(json);
                 foreach (var v in movies.results)
                     Movies.Add(v);
-                isLoading = false;
+                movieisLoading = false;
+            }
+        }
+
+        private void peoplewebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            _peoplewebClient.DownloadStringCompleted -= peoplewebClient_DownloadStringCompleted;
+            if (e == null)
+            {
+                MessageBox.Show("Seems like the internet connection is down or the website refused the request.\n:(\nWe are sad too that you couldnt continue.", "Error", MessageBoxButton.OK);
+                movieisLoading = false;
+                return; //TODO: give a error here
+            }
+            string json = e.Result;
+            if (!string.IsNullOrEmpty(json))
+            {
+                people = JsonConvert.DeserializeObject<People>(json);
+                foreach (var v in people.results)
+                    People.Add(v);
+                peopleisLoading = false;
             }
         }
 

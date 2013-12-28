@@ -118,7 +118,6 @@ namespace Movie_Search.Views
 
         private void input_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
-            var a = 1;
             if (e.PopUpResult.ToString() == "Ok")
             {
                 if (!string.IsNullOrWhiteSpace(e.Result))

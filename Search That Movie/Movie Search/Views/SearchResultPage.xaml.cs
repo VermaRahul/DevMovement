@@ -42,6 +42,17 @@ namespace Movie_Search.Views
             //} 
         }
 
+        private void PeopleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if (e.AddedItems.Count > 0)
+            //{
+            //    Genre selectedItem = (Genre)e.AddedItems[0];
+            //    // reset selection of ListBox 
+            //    ((ListBox)sender).SelectedIndex = -1;
+            //    NavigationService.Navigate(new Uri("/Views/DetailedGenrePage.xaml?id=" + (selectedItem.id).ToString() + "&name=" + selectedItem.name, UriKind.Relative));
+            //} 
+        }
+
         public static readonly DependencyProperty ListVerticalOffsetProperty = DependencyProperty.Register("ListVerticalOffset", typeof(double), typeof(SearchResultPage), new PropertyMetadata(new PropertyChangedCallback(OnListVerticalOffsetChanged)));
         public double ListVerticalOffset
         {

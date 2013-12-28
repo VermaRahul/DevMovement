@@ -50,10 +50,10 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot Title="Movie Search">
+        <controls:Pivot Title="Search Results">
             <controls:PivotItem Header="Movies">
                 <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" Name="progressBar1" IsIndeterminate="True" Visibility="{Binding isLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" Name="progressBar1" IsIndeterminate="True" Visibility="{Binding movieisLoading, Converter={StaticResource BoolToVis}}"/>
                     <ListBox x:Name="GenreListBox" ItemsSource="{Binding Movies}" SelectionChanged="MovieListBox_SelectionChanged" Style="{StaticResource CustomListBoxStyle}" toolkit:TiltEffect.IsTiltEnabled="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -86,6 +86,39 @@
                     </ListBox>
                 </Grid>
             </controls:PivotItem>
+
+            <controls:PivotItem Header="People">
+                <Grid>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding peopleisLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ListBox ItemsSource="{Binding People}" SelectionChanged="PeopleListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Image Margin="0,0,20,0">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="{Binding profile_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding name}" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </Grid>
+            </controls:PivotItem>
+
         </controls:Pivot>
     </Grid>
 
