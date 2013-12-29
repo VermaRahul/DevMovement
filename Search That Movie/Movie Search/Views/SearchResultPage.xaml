@@ -46,6 +46,24 @@
             </Setter>
         </Style>
 
+        <Style BasedOn="{StaticResource CustomListBoxStyle}" x:Key="CustomPeopleListBoxStyle" TargetType="ListBox" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <ScrollViewer x:Name="scrollViewer" 
+                              BorderBrush="{TemplateBinding BorderBrush}" 
+                              BorderThickness="{TemplateBinding BorderThickness}" 
+                              Background="{TemplateBinding Background}" 
+                              Foreground="{TemplateBinding Foreground}" 
+                              Padding="{TemplateBinding Padding}" 
+                              Loaded="peoplescrollViewer_Loaded">
+                            <ItemsPresenter/>
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -90,7 +108,7 @@
             <controls:PivotItem Header="People">
                 <Grid>
                     <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding peopleisLoading, Converter={StaticResource BoolToVis}}"/>
-                    <ListBox ItemsSource="{Binding People}" SelectionChanged="PeopleListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                    <ListBox ItemsSource="{Binding People}" SelectionChanged="PeopleListBox_SelectionChanged" Style="{StaticResource CustomPeopleListBoxStyle}" toolkit:TiltEffect.IsTiltEnabled="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="10,0,0,15">

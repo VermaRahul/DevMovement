@@ -91,5 +91,44 @@ namespace Movie_Search.Views
                 }
             }
         }
+        public static readonly DependencyProperty PeopleListVerticalOffsetProperty = DependencyProperty.Register("PeopleListVerticalOffset", typeof(double), typeof(SearchResultPage), new PropertyMetadata(new PropertyChangedCallback(OnPeopleListVerticalOffsetChanged)));
+        public double PeopleListVerticalOffset
+        {
+            get { return (double)this.GetValue(PeopleListVerticalOffsetProperty); }
+            set { this.SetValue(PeopleListVerticalOffsetProperty, value); }
+        }
+
+        private ScrollViewer _PeoplelistScrollViewer;
+
+        private void peoplescrollViewer_Loaded(object sender, RoutedEventArgs e)
+        {
+            _PeoplelistScrollViewer = sender as ScrollViewer;
+
+            Binding binding = new Binding();
+            binding.Source = _PeoplelistScrollViewer;
+            binding.Path = new PropertyPath("VerticalOffset");
+            binding.Mode = BindingMode.OneWay;
+            this.SetBinding(PeopleListVerticalOffsetProperty, binding);
+        }
+
+        private double _PeoplelastFetch;
+        private static void OnPeopleListVerticalOffsetChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            SearchResultPage page = obj as SearchResultPage;
+            ScrollViewer viewer = page._PeoplelistScrollViewer;
+
+            if (viewer != null)
+            {
+                if (page._PeoplelastFetch < viewer.ScrollableHeight)
+                {
+                    // Trigger within 1/4 the viewport.
+                    if (viewer.VerticalOffset >= viewer.ScrollableHeight - viewer.ViewportHeight)
+                    {
+                        page._PeoplelastFetch = viewer.ScrollableHeight;
+                        (page.DataContext as SearchResultPageViewModel).FetchNextPeoplePage();
+                    }
+                }
+            }
+        }
     }
 }

@@ -105,6 +105,10 @@ namespace Movie_Search.ViewModel
         public void FetchNextMoviePage()
         {
             GetMovieResults(que);
+        }
+
+        public void FetchNextPeoplePage()
+        {
             GetPeopleResults(que);
         }
 
