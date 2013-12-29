@@ -38,11 +38,6 @@ namespace Movie_Search.Views
             }
         }
 
-        private void Genre_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/Views/GenresPage.xaml", UriKind.Relative));
-        }
-
         private void MovieListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
@@ -125,6 +120,36 @@ namespace Movie_Search.Views
                     NavigationService.Navigate(new Uri("/Views/SearchResultPage.xaml?query=" + e.Result , UriKind.Relative));
                 }
             }
+        }
+
+        private void Genre_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/GenresPage.xaml", UriKind.Relative));
+        }
+
+        private void Upcoming_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/MovieTypePage.xaml?type=upcoming" , UriKind.Relative));
+        }
+
+        private void NowPlaying_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/MovieTypePage.xaml?type=now_playing", UriKind.Relative));
+        }
+
+        private void Populat_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/MovieTypePage.xaml?type=popular", UriKind.Relative));
+        }
+
+        private void TopRated_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/MovieTypePage.xaml?type=top_rated", UriKind.Relative));
+        }
+
+        private void People_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+
         }
     }
 }

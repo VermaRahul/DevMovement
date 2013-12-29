@@ -91,6 +91,7 @@ namespace Movie_Search.Views
                 }
             }
         }
+
         public static readonly DependencyProperty PeopleListVerticalOffsetProperty = DependencyProperty.Register("PeopleListVerticalOffset", typeof(double), typeof(SearchResultPage), new PropertyMetadata(new PropertyChangedCallback(OnPeopleListVerticalOffsetChanged)));
         public double PeopleListVerticalOffset
         {

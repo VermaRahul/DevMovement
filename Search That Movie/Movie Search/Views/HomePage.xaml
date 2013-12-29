@@ -45,25 +45,25 @@
             <controls:PanoramaItem Header="Home">
                 <Grid>
                     <ListBox toolkit:TiltEffect.IsTiltEnabled="True">
-                        <ListBoxItem Margin="10,0,0,15">
+                        <!--<ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Recent"/>
-                        </ListBoxItem>
+                        </ListBoxItem>-->
                         <ListBoxItem Margin="10,0,0,15" Tap="Genre_OnTap">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Genres" />
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,15">
+                        <ListBoxItem Margin="10,0,0,15" Tap="Upcoming_OnTap">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Upcoming"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,15">
+                        <ListBoxItem Margin="10,0,0,15" Tap="NowPlaying_OnTap">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Now Playing"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,15">
+                        <ListBoxItem Margin="10,0,0,15" Tap="Populat_OnTap">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Popular Movies"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,15">
+                        <ListBoxItem Margin="10,0,0,15" Tap="TopRated_OnTap">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Top Rated"/>
                         </ListBoxItem>
-                        <ListBoxItem Margin="10,0,0,15">
+                        <ListBoxItem Margin="10,0,0,15" Tap="People_OnTap">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="People"/>
                         </ListBoxItem>
                     </ListBox>
@@ -81,12 +81,12 @@
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
                                     </Image>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="{Binding poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
@@ -118,12 +118,12 @@
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
                                     </Image>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="{Binding poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
@@ -155,12 +155,12 @@
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
                                     </Image>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="{Binding poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
@@ -192,12 +192,12 @@
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
                                     </Image>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="{Binding poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
@@ -236,12 +236,12 @@
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
                                     </Image>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="{Binding profile_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>

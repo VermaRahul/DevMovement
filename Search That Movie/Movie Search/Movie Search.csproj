@@ -78,6 +78,7 @@
     <Compile Include="ViewModel\AllGenresViewModel.cs" />
     <Compile Include="ViewModel\DetailedGenreViewModel.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="ViewModel\MovieViewModel.cs" />
     <Compile Include="ViewModel\SearchResultPageViewModel.cs" />
     <Compile Include="Views\DetailedGenrePage.xaml.cs">
       <DependentUpon>DetailedGenrePage.xaml</DependentUpon>
@@ -87,6 +88,9 @@
     </Compile>
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MovieTypePage.xaml.cs">
+      <DependentUpon>MovieTypePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchResultPage.xaml.cs">
       <DependentUpon>SearchResultPage.xaml</DependentUpon>
@@ -106,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MovieTypePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

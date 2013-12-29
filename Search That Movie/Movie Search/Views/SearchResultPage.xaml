@@ -80,12 +80,12 @@
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
                                     </Image>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="{Binding poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
@@ -116,12 +116,12 @@
                                         <ColumnDefinition Width="150"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
                                     </Image>
-                                    <Image Margin="0,0,20,0">
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
                                             <BitmapImage UriSource="{Binding profile_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>

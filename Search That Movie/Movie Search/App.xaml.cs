@@ -34,6 +34,9 @@ namespace Movie_Search
         public string DetailedGenresAPI_1 = "https://api.themoviedb.org/3/genre/";
         public string DetailedGenresAPI_2 = "/movies?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
 
+        public string MovieTypeAPI_1 = "https://api.themoviedb.org/3/movie/";
+        public string MovieTypeAPI_2 = "?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
+
         //Globals end
         public static new App Current
         {
