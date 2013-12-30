@@ -149,7 +149,7 @@ namespace Movie_Search.Views
 
         private void People_OnTap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/Views/PropleListPage.xaml", UriKind.Relative));
         }
     }
 }

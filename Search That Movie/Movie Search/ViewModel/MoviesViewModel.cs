@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace Movie_Search.ViewModel
 {
-    public class MovieViewModel : INotifyPropertyChanged
+    public class MoviesViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Movie> _Movies = new ObservableCollection<Movie>();
 

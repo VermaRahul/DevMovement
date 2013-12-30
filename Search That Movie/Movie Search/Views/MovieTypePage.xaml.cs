@@ -1,7 +1,5 @@
 ﻿using Microsoft.Phone.Controls;
 using Movie_Search.ViewModel;
-using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,7 +24,7 @@ namespace Movie_Search.Views
             {
                 type = NavigationContext.QueryString["type"];
                 typetext.Text = type;
-                MovieViewModel movieViewModel = new MovieViewModel();
+                MoviesViewModel movieViewModel = new MoviesViewModel();
                 movieViewModel.GetResults(type);
                 this.DataContext = movieViewModel;
             }
@@ -76,7 +74,7 @@ namespace Movie_Search.Views
                     if (viewer.VerticalOffset >= viewer.ScrollableHeight - viewer.ViewportHeight)
                     {
                         page._lastFetch = viewer.ScrollableHeight;
-                        (page.DataContext as MovieViewModel).FetchNextPage();
+                        (page.DataContext as MoviesViewModel).FetchNextPage();
                     }
                 }
             }
