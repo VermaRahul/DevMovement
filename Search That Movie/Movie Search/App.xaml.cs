@@ -34,6 +34,9 @@ namespace Movie_Search
         public string DetailedGenresAPI_1 = "https://api.themoviedb.org/3/genre/";
         public string DetailedGenresAPI_2 = "/movies?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
 
+        public string DetailedMovieAPI_1 = "https://api.themoviedb.org/3/movie/";
+        public string DetailedMovieAPI_2 = "?api_key=c9271ad7bfc80b904833986c70d34b6f&append_to_response=similar_movies,alternative_titles,keywords,releases,trailers,reviews,credits,images&include_image_language=en,null";
+
         public string MovieTypeAPI_1 = "https://api.themoviedb.org/3/movie/";
         public string MovieTypeAPI_2 = "?api_key=c9271ad7bfc80b904833986c70d34b6f&page=";
 

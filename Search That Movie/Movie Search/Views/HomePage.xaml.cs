@@ -45,7 +45,7 @@ namespace Movie_Search.Views
                 Movie selectedItem = (Movie)e.AddedItems[0];
                 // reset selection of ListBox 
                 ((ListBox)sender).SelectedIndex = -1;
-                //NavigationService.Navigate(new Uri("/Views/DetailedGenrePage.xaml?id=" + (selectedItem.id).ToString() + "&name=" + selectedItem.name, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Views/DetailedMoviePage.xaml?id=" + (selectedItem.id).ToString() + "&title=" + selectedItem.title , UriKind.Relative));
             } 
         }
 
