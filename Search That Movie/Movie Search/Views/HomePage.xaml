@@ -19,10 +19,6 @@
     <phone:PhoneApplicationPage.Resources>
         <converter:BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converter:ImageResolutionConverter x:Key="ImageResolutionConverter" />
-
-
-
-
     </phone:PhoneApplicationPage.Resources>
 	<phone:PhoneApplicationPage.ApplicationBar>
 		<shell:ApplicationBar>
@@ -36,9 +32,9 @@
     <Grid x:Name="LayoutRoot">
         <controls:Panorama x:Name="panoramaItem" Title="Movie Search" SelectionChanged="Panorama_SelectionChanged">
             <controls:Panorama.Background>
-                <ImageBrush ImageSource="http://image.tmdb.org/t/p/w1280/d8duYyyC9J5T825Hg7grmaabfxQ.jpg"
+                <!--<ImageBrush ImageSource="http://image.tmdb.org/t/p/w1280/d8duYyyC9J5T825Hg7grmaabfxQ.jpg"
                             Stretch="UniformToFill"
-                            Opacity="0.4"/>
+                            Opacity="0.4"/>-->
             </controls:Panorama.Background>
 
             <!--Panorama item one-->
@@ -238,7 +234,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                         <Image.Source>
-                                            <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                            <BitmapImage UriSource="/Assets/placeholders/person_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
                                         </Image.Source>
                                     </Image>
                                     <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
