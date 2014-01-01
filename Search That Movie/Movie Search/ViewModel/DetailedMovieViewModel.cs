@@ -84,7 +84,9 @@ namespace Movie_Search.ViewModel
                     ImageBrush brush = new ImageBrush
                     {
                         ImageSource = new System.Windows.Media.Imaging.BitmapImage(uri),
-                        Opacity = 0.5d
+                        Opacity = 0.5d,
+                        Stretch = Stretch.UniformToFill,
+                        AlignmentX = AlignmentX.Center
                     };
                     BackgroundBrush = brush;
                 }
