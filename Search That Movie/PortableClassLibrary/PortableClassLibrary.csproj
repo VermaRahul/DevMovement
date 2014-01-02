@@ -39,6 +39,7 @@
     <Compile Include="Model\AllGenres.cs" />
     <Compile Include="Model\DetailedGenre.cs" />
     <Compile Include="Model\DetailedMovie.cs" />
+    <Compile Include="Model\DetailedPerson.cs" />
     <Compile Include="Model\HomeItems.cs" />
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\Person.cs" />

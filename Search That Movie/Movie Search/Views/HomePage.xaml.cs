@@ -56,7 +56,7 @@ namespace Movie_Search.Views
                 Person selectedItem = (Person)e.AddedItems[0];
                 // reset selection of ListBox 
                 ((ListBox)sender).SelectedIndex = -1;
-                //NavigationService.Navigate(new Uri("/Views/DetailedGenrePage.xaml?id=" + (selectedItem.id).ToString() + "&name=" + selectedItem.name, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Views/DetailedPersonPage.xaml?id=" + (selectedItem.id).ToString() + "&title=" + selectedItem.name, UriKind.Relative));
             }
         }
 
@@ -95,7 +95,6 @@ namespace Movie_Search.Views
                 newButton.IconUri = new Uri("/Assets/AppBar/appbar.download.rest.png", UriKind.Relative);
                 newButton.Text = "Show All";
                 this.ApplicationBar.Buttons.Add(newButton);
-                panoramaItem.Title = "Yolopad";
             }
         }
 

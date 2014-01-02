@@ -112,7 +112,7 @@ namespace PortableClassLibrary.Model
         public int total_results { get; set; }
     }
 
-    public class Cast
+    public class MovieCast
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -122,7 +122,7 @@ namespace PortableClassLibrary.Model
         public string profile_path { get; set; }
     }
 
-    public class Crew
+    public class MovieCrew
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -133,8 +133,8 @@ namespace PortableClassLibrary.Model
 
     public class Credits
     {
-        public List<Cast> cast { get; set; }
-        public List<Crew> crew { get; set; }
+        public List<MovieCast> cast { get; set; }
+        public List<MovieCrew> crew { get; set; }
     }
 
     public class Backdrop
