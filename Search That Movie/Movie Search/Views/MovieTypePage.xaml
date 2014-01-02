@@ -83,15 +83,8 @@
                                 </Image.Source>
                             </Image>
                             <StackPanel Orientation="Vertical" Grid.Column="1">
-                                <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
-
-                                <!--<TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
-                                            <Run Text="Rating: " />
-                                            <Run Text="{Binding vote_average}" />
-                                            <Run Text="/ 10" />
-                                </TextBlock>-->
-
-                                <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,0,0,0">
+                                <TextBlock Style="{StaticResource MovieListItemHeaderStyle}" Text="{Binding title}"/>
+                                <TextBlock Style="{StaticResource MovieListItemSubHeaderStyle}">
                                             <Run Text="Date: " />
                                             <Run Text="{Binding release_date}" />
                                 </TextBlock>
@@ -102,5 +95,4 @@
             </ListBox>
         </Grid>
     </Grid>
-
 </phone:PhoneApplicationPage>

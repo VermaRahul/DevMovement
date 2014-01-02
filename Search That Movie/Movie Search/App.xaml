@@ -7,9 +7,46 @@
 
     <!--Application Resources-->
     <Application.Resources>
-        <!--<Style TargetType="">
-            
-        </Style>-->
+        <Style x:Key="MovieListItemHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource PhoneTextNormalStyle}">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontFamily" Value="Segoe WP Black"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="MovieListItemSubHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource PhoneTextSubtleStyle}">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontFamily" Value="Segoe WP Black"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="MovieListItemDetailStyle" TargetType="TextBlock" BasedOn="{StaticResource PhoneTextSubtleStyle}">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontFamily" Value="Segoe WP Semibold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="PersonListItemHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource MovieListItemHeaderStyle}">
+        </Style>
+
+        <Style x:Key="PersonListItemSubHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource MovieListItemSubHeaderStyle}">
+            <Setter Property="FontFamily" Value="Segoe WP Semibold"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="BlockHeaderTextStyle">
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="FontFamily" Value="Segoe WP Black"/>
+            <Setter Property="FontSize" Value="22"/>
+        </Style>
+        
+        <Style TargetType="TextBlock" x:Key="BlockDetailTextStyle">
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="22"/>
+        </Style>
+
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

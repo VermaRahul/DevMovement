@@ -22,7 +22,7 @@
     </phone:PhoneApplicationPage.Resources>
 	<phone:PhoneApplicationPage.ApplicationBar>
 		<shell:ApplicationBar>
-			<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.refresh.rest.png" Text="Refresh"/>
+			<!--<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.refresh.rest.png" Text="Refresh"/>-->
 			<!--<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.download.rest.png" Text="View All"/>-->
 			<shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.feature.search.rest.png" Text="Search" Click="SearchAppBarButton_Click"/>
 		</shell:ApplicationBar>
@@ -31,11 +31,11 @@
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
         <controls:Panorama x:Name="panoramaItem" Title="Movie Search" SelectionChanged="Panorama_SelectionChanged">
-            <controls:Panorama.Background>
-                <!--<ImageBrush ImageSource="http://image.tmdb.org/t/p/w1280/d8duYyyC9J5T825Hg7grmaabfxQ.jpg"
+            <!--<controls:Panorama.Background>
+                <ImageBrush ImageSource="http://image.tmdb.org/t/p/w1280/d8duYyyC9J5T825Hg7grmaabfxQ.jpg"
                             Stretch="UniformToFill"
-                            Opacity="0.4"/>-->
-            </controls:Panorama.Background>
+                            Opacity="0.4"/>
+            </controls:Panorama.Background>-->
 
             <!--Panorama item one-->
             <controls:PanoramaItem Header="Home">
@@ -44,6 +44,7 @@
                         <!--<ListBoxItem Margin="10,0,0,15">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Recent"/>
                         </ListBoxItem>-->
+                        
                         <ListBoxItem Margin="10,0,0,15" Tap="Genre_OnTap">
                             <TextBlock Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Genres" />
                         </ListBoxItem>
@@ -88,18 +89,16 @@
                                         </Image.Source>
                                     </Image>
                                     <StackPanel Orientation="Vertical" Grid.Column="1">
-                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
-
-                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
-                                    <Run Text="Releasing: " />
-                                    <Run Text="{Binding release_date}" />
+                                        <TextBlock Style="{StaticResource MovieListItemHeaderStyle}" Text="{Binding title}"/>
+                                        <TextBlock Style="{StaticResource MovieListItemSubHeaderStyle}">
+                                            <Run Text="Date: " />
+                                            <Run Text="{Binding release_date}" />
                                         </TextBlock>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-
                 </Grid>
             </controls:PanoramaItem>
 
@@ -125,11 +124,10 @@
                                         </Image.Source>
                                     </Image>
                                     <StackPanel Orientation="Vertical" Grid.Column="1">
-                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
-
-                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
-                                    <Run Text="Released: " />
-                                    <Run Text="{Binding release_date}" />
+                                        <TextBlock Style="{StaticResource MovieListItemHeaderStyle}" Text="{Binding title}"/>
+                                        <TextBlock Style="{StaticResource MovieListItemSubHeaderStyle}" >
+                                            <Run Text="Date: " />
+                                            <Run Text="{Binding release_date}" />
                                         </TextBlock>
                                     </StackPanel>
                                 </Grid>
@@ -162,10 +160,9 @@
                                         </Image.Source>
                                     </Image>
                                     <StackPanel Orientation="Vertical" Grid.Column="1">
-                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
-
-                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
-                                            <Run Text="Released: " />
+                                        <TextBlock Style="{StaticResource MovieListItemHeaderStyle}" Text="{Binding title}"/>
+                                        <TextBlock Style="{StaticResource MovieListItemSubHeaderStyle}" >
+                                            <Run Text="Date: " />
                                             <Run Text="{Binding release_date}" />
                                         </TextBlock>
                                     </StackPanel>
@@ -199,25 +196,21 @@
                                         </Image.Source>
                                     </Image>
                                     <StackPanel Orientation="Vertical" Grid.Column="1">
-                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
-
-                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
-                                            <Run Text="Rating: " />
-                                            <Run Text="{Binding vote_average}" />
-                                            <Run Text="/ 10" />
-                                        </TextBlock>
-                                        
-                                        <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,0,0,0">
-                                            <Run Text="Released: " />
+                                        <TextBlock Style="{StaticResource MovieListItemHeaderStyle}" Text="{Binding title}"/>
+                                        <TextBlock Style="{StaticResource MovieListItemSubHeaderStyle}" >
+                                            <Run Text="Date: " />
                                             <Run Text="{Binding release_date}" />
                                         </TextBlock>
-                                        
+                                        <TextBlock Style="{StaticResource MovieListItemSubHeaderStyle}">
+                                            <Run Text="Rating: "/>
+                                            <Run Text="{Binding vote_average}"/>
+                                            <Run Text="/ 10" />
+                                        </TextBlock>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-
                 </Grid>
             </controls:PanoramaItem>
 
@@ -243,13 +236,12 @@
                                         </Image.Source>
                                     </Image>
                                     <StackPanel Orientation="Vertical" Grid.Column="1">
-                                        <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding name}" TextWrapping="Wrap"/>
+                                        <TextBlock Style="{StaticResource PersonListItemHeaderStyle}" Text="{Binding name}"/>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-
                 </Grid>
             </controls:PanoramaItem>
             

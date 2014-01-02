@@ -66,7 +66,7 @@
             <ListBox x:Name="GenreListBox" ItemsSource="{Binding Movies}" SelectionChanged="MovieListBox_SelectionChanged" Style="{StaticResource CustomListBoxStyle}" toolkit:TiltEffect.IsTiltEnabled="True">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                                    <Grid Margin="10,0,0,15">
+                        <Grid Margin="10,0,0,15">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="*"/>
@@ -82,10 +82,9 @@
                                 </Image.Source>
                             </Image>
                             <StackPanel Orientation="Vertical" Grid.Column="1">
-                                <TextBlock Style="{StaticResource PhoneTextGroupHeaderStyle}" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding title}" TextWrapping="Wrap"/>
-
-                                <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="10,10,0,0">
-                                    <Run Text="Released: " />
+                                <TextBlock Style="{StaticResource MovieListItemHeaderStyle}"  Text="{Binding title}"/>
+                                <TextBlock Style="{StaticResource MovieListItemDetailStyle}">
+                                    <Run Text="Date: " />
                                     <Run Text="{Binding release_date}" />
                                 </TextBlock>
                             </StackPanel>

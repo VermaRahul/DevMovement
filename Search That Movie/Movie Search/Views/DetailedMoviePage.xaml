@@ -43,13 +43,13 @@
                                         <BitmapImage UriSource="{Binding MovieResult.poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w300'}" CreateOptions="DelayCreation,BackgroundCreation" />
                                     </Image.Source>
                                 </Image>
-                                <Grid Grid.Column="1">
+                                <Grid Grid.Column="1" Margin="0,10">
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding MovieResult.title}" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" FontSize="24" FontFamily="Segoe WP Black" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding MovieResult.release_date}" Style="{StaticResource PhoneTextSubtleStyle}" FontFamily="Segoe WP Black"/>
+                                        <TextBlock Text="{Binding MovieResult.title}" Style="{StaticResource MovieListItemHeaderStyle}"/>
+                                        <TextBlock Text="{Binding MovieResult.release_date}" Style="{StaticResource MovieListItemSubHeaderStyle}"/>
                                     </StackPanel>
-                                    <TextBlock VerticalAlignment="Bottom" Margin="12,0,11,16">
-                                    	<Run Text="tmdb rating : "/>
+                                    <TextBlock VerticalAlignment="Bottom" Style="{StaticResource MovieListItemDetailStyle}">
+                                    	<Run Text="tmdb: "/>
                                     	<Run Text="{Binding MovieResult.vote_average}"/>
                                     	<Run Text=" ("/>
                                         <Run Text="{Binding MovieResult.vote_count}"/>
@@ -57,26 +57,26 @@
                                     </TextBlock>
                                 </Grid>
                             </Grid>
-                            <TextBlock Text="Overview" Margin="0,10" FontFamily="Segoe WP Black"/>
-                            <TextBlock Text="{Binding MovieResult.overview}" TextWrapping="Wrap"/>
+                            <TextBlock Style="{StaticResource BlockHeaderTextStyle}" Text="Overview:" />
+                            <TextBlock Style="{StaticResource BlockDetailTextStyle}" Text="{Binding MovieResult.overview}" />
 
-                            <TextBlock Text="Genre" Margin="0,10" FontFamily="Segoe WP Black"/>
-                            <TextBlock Text="{Binding MovieResult.combined_genres}" TextWrapping="Wrap"/>
+                            <TextBlock Style="{StaticResource BlockHeaderTextStyle}" Text="Genre" />
+                            <TextBlock Style="{StaticResource BlockDetailTextStyle}" Text="{Binding MovieResult.combined_genres}" />
 
-                            <TextBlock Text="Runtime" Margin="0,10" FontFamily="Segoe WP Black"/>
-                            <TextBlock Text="{Binding MovieResult.runtime}" TextWrapping="Wrap"/>
+                            <TextBlock Style="{StaticResource BlockHeaderTextStyle}" Text="Runtime"/>
+                            <TextBlock Style="{StaticResource BlockDetailTextStyle}" Text="{Binding MovieResult.runtime}"/>
 
-                            <TextBlock Text="Languages" Margin="0,10" FontFamily="Segoe WP Black"/>
-                            <TextBlock Text="{Binding MovieResult.combined_languages}" TextWrapping="Wrap"/>
+                            <TextBlock Style="{StaticResource BlockHeaderTextStyle}" Text="Languages"/>
+                            <TextBlock Style="{StaticResource BlockDetailTextStyle}" Text="{Binding MovieResult.combined_languages}"/>
 
-                            <TextBlock Text="Production Companies" Margin="0,10" FontFamily="Segoe WP Black"/>
-                            <TextBlock Text="{Binding MovieResult.combined_companies}" TextWrapping="Wrap"/>
+                            <TextBlock Style="{StaticResource BlockHeaderTextStyle}" Text="Production Companies"/>
+                            <TextBlock Style="{StaticResource BlockDetailTextStyle}" Text="{Binding MovieResult.combined_companies}"/>
 
-                            <TextBlock Text="Production Countries" Margin="0,10" FontFamily="Segoe WP Black"/>
-                            <TextBlock Text="{Binding MovieResult.combined_countries}" TextWrapping="Wrap"/>
+                            <TextBlock Style="{StaticResource BlockHeaderTextStyle}" Text="Production Countries"/>
+                            <TextBlock Style="{StaticResource BlockDetailTextStyle}" Text="{Binding MovieResult.combined_countries}"/>
 
-                            <TextBlock Text="Budget" Margin="0,10" FontFamily="Segoe WP Black"/>
-                            <TextBlock Text="{Binding MovieResult.budget}" TextWrapping="Wrap"/>
+                            <TextBlock Style="{StaticResource BlockHeaderTextStyle}" Text="Budget"/>
+                            <TextBlock Style="{StaticResource BlockDetailTextStyle}" Text="{Binding MovieResult.budget}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -103,8 +103,8 @@
                                         </Image.Source>
                                     </Image>
                                     <StackPanel Orientation="Vertical" Grid.Column="1">
-                                        <TextBlock Text="{Binding name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="Segoe WP Black" FontSize="22"/>
-                                        <TextBlock Text="{Binding character}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" FontFamily="Segoe WP Semibold" FontSize="20"/>
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource PersonListItemHeaderStyle}"/>
+                                        <TextBlock Text="{Binding character}" Style="{StaticResource PersonListItemSubHeaderStyle}"/>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
@@ -134,8 +134,8 @@
                                         </Image.Source>
                                     </Image>
                                     <StackPanel Orientation="Vertical" Grid.Column="1">
-                                        <TextBlock Text="{Binding name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="Segoe WP Black" FontSize="22"/>
-                                        <TextBlock Text="{Binding job}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" FontFamily="Segoe WP Semibold" FontSize="20"/>
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource PersonListItemHeaderStyle}"/>
+                                        <TextBlock Text="{Binding job}" Style="{StaticResource PersonListItemSubHeaderStyle}"/>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
