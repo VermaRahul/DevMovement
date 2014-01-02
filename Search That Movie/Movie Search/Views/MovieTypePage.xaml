@@ -74,7 +74,7 @@
                             </Grid.ColumnDefinitions>
                             <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
                                 <Image.Source>
-                                    <BitmapImage UriSource="/Assets/placeholders/movie_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                    <BitmapImage UriSource="/Assets/placeholders/placeholder_movie.jpg" CreateOptions="DelayCreation,BackgroundCreation" />
                                 </Image.Source>
                             </Image>
                             <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">

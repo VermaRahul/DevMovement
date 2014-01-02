@@ -22,15 +22,128 @@
     </phone:PhoneApplicationPage.Resources>
 
     <Grid x:Name="LayoutRoot">
-        <controls:Panorama x:Name="panoramaItem" Title="Movie" Background="{Binding BackgroundBrush}">
-            <controls:PanoramaItem Header="item1">
-                <Grid/>
-            </controls:PanoramaItem>
+        <controls:Pivot x:Name="panoramaItem" Title="Movie" Background="{Binding BackgroundBrush}">
+            <controls:PivotItem Header="info" >
+                <Grid>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding isLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <Grid Margin="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Stretch="UniformToFill">
+                                    <Image.Source>
+                                        <BitmapImage UriSource="/Assets/placeholders/placeholder_movie.jpg" CreateOptions="DelayCreation,BackgroundCreation" />
+                                    </Image.Source>
+                                </Image>
+                                <Image Stretch="UniformToFill">
+                                    <Image.Source>
+                                        <BitmapImage UriSource="{Binding MovieResult.poster_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w300'}" CreateOptions="DelayCreation,BackgroundCreation" />
+                                    </Image.Source>
+                                </Image>
+                                <Grid Grid.Column="1">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding MovieResult.title}" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" FontSize="24" FontFamily="Segoe WP Black" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding MovieResult.release_date}" Style="{StaticResource PhoneTextSubtleStyle}" FontFamily="Segoe WP Black"/>
+                                    </StackPanel>
+                                    <TextBlock VerticalAlignment="Bottom" Margin="12,0,11,16">
+                                    	<Run Text="tmdb rating : "/>
+                                    	<Run Text="{Binding MovieResult.vote_average}"/>
+                                    	<Run Text=" ("/>
+                                        <Run Text="{Binding MovieResult.vote_count}"/>
+                                    	<Run Text=")"/>
+                                    </TextBlock>
+                                </Grid>
+                            </Grid>
+                            <TextBlock Text="Overview" Margin="0,10" FontFamily="Segoe WP Black"/>
+                            <TextBlock Text="{Binding MovieResult.overview}" TextWrapping="Wrap"/>
 
-            <controls:PanoramaItem Header="item2">
-                <Grid/>
-            </controls:PanoramaItem>
-        </controls:Panorama>
+                            <TextBlock Text="Genre" Margin="0,10" FontFamily="Segoe WP Black"/>
+                            <TextBlock Text="{Binding MovieResult.combined_genres}" TextWrapping="Wrap"/>
+
+                            <TextBlock Text="Runtime" Margin="0,10" FontFamily="Segoe WP Black"/>
+                            <TextBlock Text="{Binding MovieResult.runtime}" TextWrapping="Wrap"/>
+
+                            <TextBlock Text="Languages" Margin="0,10" FontFamily="Segoe WP Black"/>
+                            <TextBlock Text="{Binding MovieResult.combined_languages}" TextWrapping="Wrap"/>
+
+                            <TextBlock Text="Production Companies" Margin="0,10" FontFamily="Segoe WP Black"/>
+                            <TextBlock Text="{Binding MovieResult.combined_companies}" TextWrapping="Wrap"/>
+
+                            <TextBlock Text="Production Countries" Margin="0,10" FontFamily="Segoe WP Black"/>
+                            <TextBlock Text="{Binding MovieResult.combined_countries}" TextWrapping="Wrap"/>
+
+                            <TextBlock Text="Budget" Margin="0,10" FontFamily="Segoe WP Black"/>
+                            <TextBlock Text="{Binding MovieResult.budget}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="cast">
+                <Grid>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding isLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ListBox ItemsSource="{Binding MovieResult.credits.cast}" SelectionChanged="PeopleListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="/Assets/placeholders/person_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="{Binding profile_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <TextBlock Text="{Binding name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="Segoe WP Black" FontSize="22"/>
+                                        <TextBlock Text="{Binding character}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" FontFamily="Segoe WP Semibold" FontSize="20"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="crew">
+                <Grid>
+                    <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding isLoading, Converter={StaticResource BoolToVis}}"/>
+                    <ListBox ItemsSource="{Binding MovieResult.credits.crew}" SelectionChanged="PeopleListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="/Assets/placeholders/person_placeholder.png" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Image Margin="0,0,20,0" Height="190" Stretch="UniformToFill">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="{Binding profile_path, Converter={StaticResource ImageResolutionConverter}, ConverterParameter='w130'}" CreateOptions="DelayCreation,BackgroundCreation" />
+                                        </Image.Source>
+                                    </Image>
+                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                        <TextBlock Text="{Binding name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="Segoe WP Black" FontSize="22"/>
+                                        <TextBlock Text="{Binding job}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" FontFamily="Segoe WP Semibold" FontSize="20"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
     </Grid>
 
 </phone:PhoneApplicationPage>
