@@ -19,6 +19,31 @@
     <phone:PhoneApplicationPage.Resources>
         <converter:BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converter:ImageResolutionConverter x:Key="ImageResolutionConverter" />
+
+        <Style x:Key="CustomListBoxStyle" TargetType="ListBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <ScrollViewer x:Name="scrollViewer" 
+                              BorderBrush="{TemplateBinding BorderBrush}" 
+                              BorderThickness="{TemplateBinding BorderThickness}" 
+                              Background="{TemplateBinding Background}" 
+                              Foreground="{TemplateBinding Foreground}" 
+                              Padding="{TemplateBinding Padding}" 
+                              Loaded="ScrollViewer_Loaded">
+                            <ItemsPresenter/>
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </phone:PhoneApplicationPage.Resources>
 
     <phone:PhoneApplicationPage.ApplicationBar>
@@ -43,7 +68,7 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding peopleisLoading, Converter={StaticResource BoolToVis}}"/>
-            <ListBox ItemsSource="{Binding People}" SelectionChanged="PeopleListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+            <ListBox ItemsSource="{Binding People}" SelectionChanged="PeopleListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True" Style="{StaticResource CustomListBoxStyle}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="10,0,0,15">

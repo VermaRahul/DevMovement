@@ -5,6 +5,7 @@ using PortableClassLibrary.Model;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Navigation;
 
 namespace Movie_Search.Views
@@ -58,6 +59,45 @@ namespace Movie_Search.Views
                 if (!string.IsNullOrWhiteSpace(e.Result))
                 {
                     NavigationService.Navigate(new Uri("/Views/SearchResultPage.xaml?query=" + e.Result, UriKind.Relative));
+                }
+            }
+        }
+
+        public static readonly DependencyProperty ListVerticalOffsetProperty = DependencyProperty.Register("ListVerticalOffset", typeof(double), typeof(PropleListPage), new PropertyMetadata(new PropertyChangedCallback(OnListVerticalOffsetChanged)));
+        public double ListVerticalOffset
+        {
+            get { return (double)this.GetValue(ListVerticalOffsetProperty); }
+            set { this.SetValue(ListVerticalOffsetProperty, value); }
+        }
+
+        private ScrollViewer _listScrollViewer;
+        private void ScrollViewer_Loaded(object sender, RoutedEventArgs e)
+        {
+            _listScrollViewer = sender as ScrollViewer;
+
+            Binding binding = new Binding();
+            binding.Source = _listScrollViewer;
+            binding.Path = new PropertyPath("VerticalOffset");
+            binding.Mode = BindingMode.OneWay;
+            this.SetBinding(ListVerticalOffsetProperty, binding);
+        }
+
+        private double _lastFetch;
+        private static void OnListVerticalOffsetChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            PropleListPage page = obj as PropleListPage;
+            ScrollViewer viewer = page._listScrollViewer;
+
+            if (viewer != null)
+            {
+                if (page._lastFetch < viewer.ScrollableHeight)
+                {
+                    // Trigger within 1/4 the viewport.
+                    if (viewer.VerticalOffset >= viewer.ScrollableHeight - viewer.ViewportHeight)
+                    {
+                        page._lastFetch = viewer.ScrollableHeight;
+                        (page.DataContext as PeopleViewModel).FetchNextPage();
+                    }
                 }
             }
         }
