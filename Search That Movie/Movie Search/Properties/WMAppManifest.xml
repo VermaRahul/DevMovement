@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{7ba7b173-9bcb-4dd7-bf14-a9b9296019b4}" Title="Movie Search" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Rahul Verma" Description="Sample description" Publisher="Coffee Monster">
+  <App xmlns="" ProductID="{7ba7b173-9bcb-4dd7-bf14-a9b9296019b4}" Title="Movie Search" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Rahul Verma" Description="Simple app to browse your favourite movies and celebrities." Publisher="Coffee Monster">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
       <Capability Name="ID_CAP_IDENTITY_USER" />
       <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="Views/HomePage.xaml" />
