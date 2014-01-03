@@ -21,6 +21,12 @@
         <converter:ImageResolutionConverter x:Key="ImageResolutionConverter" />
     </phone:PhoneApplicationPage.Resources>
 
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.feature.search.rest.png" Text="Search" Click="SearchAppBarButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
     <Grid x:Name="LayoutRoot">
         <controls:Pivot x:Name="panoramaItem" Title="Movie" Background="{Binding BackgroundBrush}">
             <controls:PivotItem Header="info" >
@@ -84,7 +90,7 @@
             <controls:PivotItem Header="cast">
                 <Grid>
                     <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding isLoading, Converter={StaticResource BoolToVis}}"/>
-                    <ListBox ItemsSource="{Binding MovieResult.credits.cast}" SelectionChanged="PeopleListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                    <ListBox ItemsSource="{Binding MovieResult.credits.cast}" SelectionChanged="Cast_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="10,0,0,15">
@@ -115,7 +121,7 @@
             <controls:PivotItem Header="crew">
                 <Grid>
                     <ProgressBar HorizontalAlignment="Stretch" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding isLoading, Converter={StaticResource BoolToVis}}"/>
-                    <ListBox ItemsSource="{Binding MovieResult.credits.crew}" SelectionChanged="PeopleListBox_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
+                    <ListBox ItemsSource="{Binding MovieResult.credits.crew}" SelectionChanged="Crew_SelectionChanged" toolkit:TiltEffect.IsTiltEnabled="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="10,0,0,15">

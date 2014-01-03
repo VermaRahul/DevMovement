@@ -21,6 +21,12 @@
         <converter:ImageResolutionConverter x:Key="ImageResolutionConverter" />
     </phone:PhoneApplicationPage.Resources>
 
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/appbar.feature.search.rest.png" Text="Search" Click="SearchAppBarButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>

@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using Coding4Fun.Toolkit.Controls;
+using Microsoft.Phone.Controls;
+using Movie_Search.ViewModel;
+using PortableClassLibrary.Model;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using PortableClassLibrary.Model;
 using System.Windows.Navigation;
-using Movie_Search.ViewModel;
-using Microsoft.Phone.Shell;
-using Coding4Fun.Toolkit.Controls;
 
 namespace Movie_Search.Views
 {
@@ -60,43 +51,43 @@ namespace Movie_Search.Views
             }
         }
 
-        private void Panorama_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (((Panorama)sender).SelectedIndex == 0)
-            {
-                for (var i = 0; i < this.ApplicationBar.Buttons.Count; i++)
-                {
-                    var button = this.ApplicationBar.Buttons[i] as ApplicationBarIconButton;
+        //private void Panorama_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (((Panorama)sender).SelectedIndex == 0)
+        //    {
+        //        for (var i = 0; i < this.ApplicationBar.Buttons.Count; i++)
+        //        {
+        //            var button = this.ApplicationBar.Buttons[i] as ApplicationBarIconButton;
 
-                    if (button != null)
-                    {
-                        if (button.Text == "Show All")
-                        {
-                            this.ApplicationBar.Buttons.RemoveAt(i);
-                            return;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                for (var i = 0; i < this.ApplicationBar.Buttons.Count; i++)
-                {
-                    var button = this.ApplicationBar.Buttons[i] as ApplicationBarIconButton;
-                    if (button != null)
-                    {
-                        if (button.Text == "Show All")
-                        {
-                            return;
-                        }
-                    }
-                }
-                var newButton = new ApplicationBarIconButton();
-                newButton.IconUri = new Uri("/Assets/AppBar/appbar.download.rest.png", UriKind.Relative);
-                newButton.Text = "Show All";
-                this.ApplicationBar.Buttons.Add(newButton);
-            }
-        }
+        //            if (button != null)
+        //            {
+        //                if (button.Text == "Show All")
+        //                {
+        //                    this.ApplicationBar.Buttons.RemoveAt(i);
+        //                    return;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        for (var i = 0; i < this.ApplicationBar.Buttons.Count; i++)
+        //        {
+        //            var button = this.ApplicationBar.Buttons[i] as ApplicationBarIconButton;
+        //            if (button != null)
+        //            {
+        //                if (button.Text == "Show All")
+        //                {
+        //                    return;
+        //                }
+        //            }
+        //        }
+        //        var newButton = new ApplicationBarIconButton();
+        //        newButton.IconUri = new Uri("/Assets/AppBar/appbar.download.rest.png", UriKind.Relative);
+        //        newButton.Text = "Show All";
+        //        this.ApplicationBar.Buttons.Add(newButton);
+        //    }
+        //}
 
         private void SearchAppBarButton_Click(object sender, EventArgs e)
         {
