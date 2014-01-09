@@ -26,7 +26,10 @@ namespace Movie_Search.Views
             if (e.NavigationMode == NavigationMode.Forward || e.NavigationMode == NavigationMode.New)
             {
                 type = NavigationContext.QueryString["type"];
-                typetext.Text = type;
+                if (type == "now_playing")
+                    typetext.Text = "now playing";
+                else
+                    typetext.Text = type;
                 MoviesViewModel movieViewModel = new MoviesViewModel();
                 movieViewModel.GetResults(type);
                 this.DataContext = movieViewModel;

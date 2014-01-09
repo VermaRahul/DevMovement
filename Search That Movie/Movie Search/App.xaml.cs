@@ -133,6 +133,16 @@ namespace Movie_Search
                 // An unhandled exception has occurred; break into the debugger
                 System.Diagnostics.Debugger.Break();
             }
+
+            if (e.ExceptionObject is System.Net.WebException)
+            {
+                // Inform the user
+                MessageBox.Show("Seems like the internet connection is down or the website refused the request.\n:(\nWe are sad too that you couldnt continue.", "Error", MessageBoxButton.OK);
+
+                // Recover from the error
+                e.Handled = true;
+                return;
+            }
         }
 
         #region Phone application initialization
